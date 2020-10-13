@@ -7,19 +7,18 @@
         <q-btn flat dense label="Next" @click="calendarNext" />
       </div>
       <q-separator />
-      <div style="overflow: hidden; height: 390px;">
+      <div style="overflow: hidden; height: 400px;">
         <q-calendar
           ref="calendar"
           v-model="selectedDate"
-          view="week"
+          view="day"
           locale="en-us"
-          animated
           @input="onModelChanged"
-          @click:date2="onClickDate2"
-          @click:day:header2="onClickDayHeader2"
-          @click:interval2="onClickInterval2"
-          @click:time2="onClickTime2"
-          @click:interval:header2="onClickIntervalHeader2"
+          @click:date2="onClickDate"
+          @click:day2="onClickDay"
+          @click:interval2="onClickInterval"
+          @click:time2="onClickTime"
+          @click:interval:header2="onClickIntervalHeader"
         />
       </div>
     </div>
@@ -56,19 +55,19 @@ export default {
     onModelChanged (date) {
       this.events.unshift(`Model changed: ${date}`)
     },
-    onClickDate2 (data) {
+    onClickDate (data) {
       this.events.unshift(`click:date2: ${JSON.stringify(data)}`)
     },
-    onClickDayHeader2 (data) {
-      this.events.unshift(`click:day:header2: ${JSON.stringify(data)}`)
+    onClickDay (data) {
+      this.events.unshift(`click:day2: ${JSON.stringify(data)}`)
     },
-    onClickInterval2 (data) {
+    onClickInterval (data) {
       this.events.unshift(`click:interval2: ${JSON.stringify(data)}`)
     },
-    onClickTime2 (data) {
+    onClickTime (data) {
       this.events.unshift(`click:time2: ${JSON.stringify(data)}`)
     },
-    onClickIntervalHeader2 (data) {
+    onClickIntervalHeader (data) {
       this.events.unshift(`click:interval:header2: ${JSON.stringify(data)}`)
     }
   }

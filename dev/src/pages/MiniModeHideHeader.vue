@@ -1,10 +1,13 @@
 <template>
-  <div style="max-width: 800px; width: 100%;">
+  <div class="row justify-center q-pa-md" style="max-width: 800px; width: 100%; overflow: hidden;">
     <q-calendar
+      ref="calendar"
       v-model="selectedDate"
       view="month"
-      hide-header
       locale="en-us"
+      mini-mode
+      hide-header
+      style="max-width: 300px; min-width: auto; overflow: hidden"
     />
   </div>
 </template>

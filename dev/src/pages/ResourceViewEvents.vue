@@ -11,15 +11,17 @@
         <q-calendar
           ref="calendar"
           v-model="selectedDate"
-          view="week"
+          view="day-resource"
           locale="en-us"
+          short-weekday-label
+          :resources="resources"
+          :resource-height="50"
           animated
           @input="onModelChanged"
-          @click:date2="onClickDate2"
-          @click:day:header2="onClickDayHeader2"
-          @click:interval2="onClickInterval2"
           @click:time2="onClickTime2"
-          @click:interval:header2="onClickIntervalHeader2"
+          @click:resource2="onClickResource2"
+          @click:interval2="onClickInterval2"
+          @click:resource:header2="onClickResourceHeader2"
         />
       </div>
     </div>
@@ -43,7 +45,16 @@ export default {
   data () {
     return {
       selectedDate: '',
-      events: []
+      events: [],
+      resources: [
+        { label: 'John' },
+        { label: 'Mary' },
+        { label: 'Susan' },
+        { label: 'Olivia' },
+        { label: 'Board Room' },
+        { label: 'Room-1' },
+        { label: 'Room-2' }
+      ]
     }
   },
   methods: {
@@ -56,11 +67,8 @@ export default {
     onModelChanged (date) {
       this.events.unshift(`Model changed: ${date}`)
     },
-    onClickDate2 (data) {
-      this.events.unshift(`click:date2: ${JSON.stringify(data)}`)
-    },
-    onClickDayHeader2 (data) {
-      this.events.unshift(`click:day:header2: ${JSON.stringify(data)}`)
+    onClickResource2 (data) {
+      this.events.unshift(`click:resource2: ${JSON.stringify(data)}`)
     },
     onClickInterval2 (data) {
       this.events.unshift(`click:interval2: ${JSON.stringify(data)}`)
@@ -68,8 +76,8 @@ export default {
     onClickTime2 (data) {
       this.events.unshift(`click:time2: ${JSON.stringify(data)}`)
     },
-    onClickIntervalHeader2 (data) {
-      this.events.unshift(`click:interval:header2: ${JSON.stringify(data)}`)
+    onClickResourceHeader2 (data) {
+      this.events.unshift(`click:resource:header2: ${JSON.stringify(data)}`)
     }
   }
 }

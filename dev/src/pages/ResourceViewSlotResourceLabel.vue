@@ -2,13 +2,16 @@
   <div style="max-width: 800px; width: 100%;">
     <q-calendar
       v-model="selectedDate"
-      view="week-scheduler"
+      view="day-resource"
       :resources="resources"
+      :resource-height="50"
       :resource-width="160"
       locale="en-us"
-      style="height: 500px;"
+      sticky
+      bordered
+      style="height: 200px; max-width: 800px; width: 100%;"
     >
-      <template #scheduler-resource="{ resource /*, index */ }">
+      <template #resource-label="{ resource /*, index */ }">
         <div class="col-12">
           <q-btn flat class="fit" :icon="getResourceImage(resource)" :label="resource.label"/>
         </div>

@@ -11,7 +11,7 @@
         <q-calendar
           ref="calendar"
           v-model="selectedDate"
-          view="week"
+          view="day"
           locale="en-us"
           animated
           @input="onModelChanged"

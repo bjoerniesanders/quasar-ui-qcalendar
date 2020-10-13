@@ -1,87 +1,52 @@
 <template>
-  <div>
-    <q-toolbar>
-      <q-btn stretch flat label="Prev" @click="calendarPrev" />
-      <q-separator vertical />
-      <q-btn stretch flat label="Next" @click="calendarNext" />
-      <q-space />
-    </q-toolbar>
-    <q-separator />
-    <div class="row justify-between">
-      <div class="col-8" style="overflow: hidden;">
+  <div class="row items-center" style="max-width: 800px; width: 100%; height: 421px;">
+    <div class="col-8 full-height">
+      <div class="row justify-center items-center" style="height: 30px;">
+        <q-btn flat dense label="Prev" @click="calendarPrev" />
+        <q-separator vertical />
+        <q-btn flat dense label="Next" @click="calendarNext" />
+      </div>
+      <q-separator />
+      <div style="overflow: hidden; height: 390px;">
         <q-calendar
           ref="calendar"
           v-model="selectedDate"
           view="month"
           locale="en-us"
           animated
-          transition-prev="slide-right"
-          transition-next="slide-left"
-          :day-class="classDay"
-          :selected-start-end-dates="startEndDates"
-          style="height: 320px"
-          @mousedown:day="onMouseDownDay"
-          @mouseup:day="onMouseUpDay"
-          @mousemove:day="onMouseMoveDay"
-        >
-          <template #day="{ /* date */ }">
-          </template>
-        </q-calendar>
-      </div>
-      <div class="col-4" style="min-height: 100%; border: #c0c0c0 solid 1px;">
+          show-work-weeks
+          short-weekday-label
+          short-month-label
+          @input="onModelChanged"
+          @click:date2="onClickDate2"
+          @click:day2="onClickDay2"
+          @click:workweek2="onClickWorkweek2"
+          @click:workweek:header2="onClickWorkweekHeader2"
+          @click:day:header2="onClickDayHeader2"
+        />
       </div>
     </div>
+    <q-card class="events col-4 q-pa-xs full-height column justify-start items-start">
+      <q-item-section class="full-width">
+        <q-item-label>Events</q-item-label>
+        <q-item-label caption>New data appended to top</q-item-label>
+      </q-item-section>
+      <q-separator />
+      <div class="scroll overflow-auto" style="height: 360px; width: 100%;">
+        <div v-for="(event, index) in events" :key="index" class="col-12" style="font-size: 10px; line-height: 10px; max-height: 14px; min-height: 14px; padding: 2px 2px; white-space: nowrap;">
+          {{ event }}
+        </div>
+      </div>
+    </q-card>
   </div>
 </template>
 
 <script>
-// normally you would not import "all" of QCalendar, but is needed for this example to work with UMD (codepen)
-import QCalendar from 'ui' // ui is aliased from '@quasar/quasar-ui-qcalendar'
-
-function leftClick (e) {
-  return e.button === 0
-}
-
 export default {
   data () {
     return {
       selectedDate: '',
-      anchorTimestamp: '',
-      otherTimestamp: '',
-      mouseDown: false
-    }
-  },
-  computed: {
-    startEndDates () {
-      const dates = []
-      if (this.anchorDayIdentifier !== false && this.otherDayIdentifier !== false) {
-        if (this.anchorDayIdentifier <= this.otherDayIdentifier) {
-          dates.push(this.anchorTimestamp.date, this.otherTimestamp.date)
-        } else {
-          dates.push(this.otherTimestamp.date, this.anchorTimestamp.date)
-        }
-      }
-      return dates
-    },
-    anchorDayIdentifier () {
-      if (this.anchorTimestamp !== '') {
-        return QCalendar.getDayIdentifier(this.anchorTimestamp)
-      }
-      return false
-    },
-    otherDayIdentifier () {
-      if (this.otherTimestamp !== '') {
-        return QCalendar.getDayIdentifier(this.otherTimestamp)
-      }
-      return false
-    },
-    lowIdentifier () {
-      // returns lowest of the two values
-      return Math.min(this.anchorDayIdentifier, this.otherDayIdentifier)
-    },
-    highIdentifier () {
-      // returns highest of the two values
-      return Math.max(this.anchorDayIdentifier, this.otherDayIdentifier)
+      events: []
     }
   },
   methods: {
@@ -91,38 +56,23 @@ export default {
     calendarPrev () {
       this.$refs.calendar.prev()
     },
-    classDay (timestamp) {
-      if (this.anchorDayIdentifier !== false && this.otherDayIdentifier !== false) {
-        return this.getBetween(timestamp)
-      }
+    onModelChanged (date) {
+      this.events.unshift(`Model changed: ${date}`)
     },
-    getBetween (timestamp) {
-      const nowIdentifier = QCalendar.getDayIdentifier(timestamp)
-      return {
-        'q-selected-day-first': this.lowIdentifier === nowIdentifier,
-        'q-selected-day': this.lowIdentifier <= nowIdentifier && this.highIdentifier >= nowIdentifier,
-        'q-selected-day-last': this.highIdentifier === nowIdentifier
-      }
+    onClickDate2 (data) {
+      this.events.unshift(`click:date2: ${JSON.stringify(data)}`)
     },
-    onMouseDownDay ({ scope, event }) {
-      if (leftClick(event)) {
-        // mouse is down, start selection and capture current
-        this.mouseDown = true
-        this.anchorTimestamp = scope
-        this.otherTimestamp = scope
-      }
+    onClickDay2 (data) {
+      this.events.unshift(`click:day2: ${JSON.stringify(data)}`)
     },
-    onMouseUpDay ({ scope, event }) {
-      if (leftClick(event)) {
-        // mouse is up, capture last and cancel selection
-        this.otherTimestamp = scope
-        this.mouseDown = false
-      }
+    onClickWorkweek2 (data) {
+      this.events.unshift(`click:workweek2: ${JSON.stringify(data)}`)
     },
-    onMouseMoveDay ({ scope, event }) {
-      if (this.mouseDown === true) {
-        this.otherTimestamp = scope
-      }
+    onClickWorkweekHeader2 (data) {
+      this.events.unshift(`click:workweek:header2: ${JSON.stringify(data)}`)
+    },
+    onClickDayHeader2 (data) {
+      this.events.unshift(`click:day:header2: ${JSON.stringify(data)}`)
     }
   }
 }
