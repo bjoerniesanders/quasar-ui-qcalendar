@@ -1,13 +1,15 @@
 <template>
-  <div style="max-width: 800px; width: 100%;">
+  <div class="row justify-center q-pa-md q-gutter-sm" style="max-width: 800px; width: 100%;">
     <q-calendar
+      ref="calendar"
       v-model="selectedDate"
-      view="week-scheduler"
-      :resources="resources"
+      view="month"
+      bordered
       :disabled-days="disabledDays"
-      :resource-style="modifiedStyle"
+      mini-mode
+      :day-style="modifiedStyle"
       locale="en-us"
-      style="height: 400px;"
+      style="max-width: 300px; min-width: auto; overflow: hidden"
     />
   </div>
 </template>
@@ -21,22 +23,14 @@ export default {
         '2019-04-02',
         '2019-04-03',
         '2019-04-04',
-        '2019-04-05'
-      ],
-      resources: [
-        { label: 'John' },
-        { label: 'Mary' },
-        { label: 'Susan' },
-        { label: 'Olivia' },
-        { label: 'Board Room' },
-        { label: 'Room-1' },
-        { label: 'Room-2' }
+        '2019-04-05',
+        ['2019-04-22', '2019-04-25'] // date range
       ]
     }
   },
   methods: {
     modifiedStyle (scope) {
-      if (scope.timestamp.disabled === true) {
+      if (scope.disabled === true) {
         return {
           cursor: 'not-allowed'
         }
