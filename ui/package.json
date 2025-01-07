@@ -62,7 +62,7 @@
     "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-buble": "^1.0.2",
     "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "autoprefixer": "^10.4.13",
     "babel-jest": "^29.4.2",
     "cssnano": "^5.1.14",
