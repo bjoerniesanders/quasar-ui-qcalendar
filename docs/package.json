@@ -21,7 +21,7 @@
     "@quasar/extras": "^1.16.15",
     "@quasar/quasar-ui-qcalendar": "./ui",
     "core-js": "^3.33.3",
-    "date-holidays": "=2.0.2",
+    "date-holidays": "=2.1.1",
     "quasar": "^2.17.5",
     "quasar-ui-example-viewer": "^2.0.0-alpha.9",
     "quasar-ui-json-api-viewer": "^2.0.0-alpha.6",
