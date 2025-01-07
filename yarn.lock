@@ -2590,10 +2590,10 @@ arraybuffer.prototype.slice@^1.0.4:
     get-intrinsic "^1.2.6"
     is-array-buffer "^3.0.4"
 
-ast-types@0.14.2:
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.14.2.tgz#600b882df8583e3cd4f2df5fa20fa83759d4bdfd"
-  integrity sha512-O0yuUDnZeQDL+ncNGlJ78BiO4jnYI3bvMsD5prT0/nsgijG/LpNBIr63gTjVTNsiGkgQhiyCShTgxt8oXOrklA==
+ast-types@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.16.1.tgz#7a9da1617c9081bc121faafe91711b4c8bb81da2"
+  integrity sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==
   dependencies:
     tslib "^2.0.1"
 
@@ -7455,17 +7455,17 @@ quasar-extras-svg-icons@^1.34.0:
   resolved "https://registry.yarnpkg.com/quasar-extras-svg-icons/-/quasar-extras-svg-icons-1.37.0.tgz#f144691e0ae7214d961c2f71fbd1a339ad8f40d4"
   integrity sha512-nmnLnK18LhuJeK836pDDRB1zOa+y9bvRgdzIrJy7TAH72QWm5vC6LJBuq0vrKky58bF8ELmkJUMZ8TnFADzBHQ==
 
-quasar-json-api@2.0.0-alpha.3:
-  version "2.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/quasar-json-api/-/quasar-json-api-2.0.0-alpha.3.tgz#acd198f4970deabb1abdf462a021d3ad05465c18"
-  integrity sha512-h8ZrutKKuyWfUdMOjzJvyS7liQEIPQ5uHcckkna1xbRZBz1IZMIv5bbksvFI3QBdnE+4OMrfdaTemULzDndKqA==
+quasar-json-api@2.0.0-alpha.5:
+  version "2.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/quasar-json-api/-/quasar-json-api-2.0.0-alpha.5.tgz#51d2e43ffe115f13f9f07bda54ccba3102f9042d"
+  integrity sha512-LGiYa/wwjbDN22r64UGygIXa7C8MCgYp2C08dhH/DMB/bfZ8lNt7Cd6GTdEsFxPnO276+yUKju/rIIyyJdflcA==
   dependencies:
     babylon "^6.18.0"
     chalk "^4.1.1"
     glob "^7.1.7"
-    recast "^0.20.4"
+    recast "^0.23.9"
     rimraf "^3.0.2"
-    table "^6.7.1"
+    table "^6.9.0"
     webpack-merge "^5.8.0"
     zlib "^1.0.5"
 
@@ -7570,14 +7570,15 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-recast@^0.20.4:
-  version "0.20.5"
-  resolved "https://registry.yarnpkg.com/recast/-/recast-0.20.5.tgz#8e2c6c96827a1b339c634dd232957d230553ceae"
-  integrity sha512-E5qICoPoNL4yU0H0NoBDntNB0Q5oMSNh9usFctYniLBluTthi3RsQVBXIJNbApOlvSwW/RGxIuokPcAc59J5fQ==
+recast@^0.23.9:
+  version "0.23.9"
+  resolved "https://registry.yarnpkg.com/recast/-/recast-0.23.9.tgz#587c5d3a77c2cfcb0c18ccce6da4361528c2587b"
+  integrity sha512-Hx/BGIbwj+Des3+xy5uAtAbdCyqK9y9wbBcDFDYanLS9JnMqf7OeF87HQwUimE87OEc72mr6tkKUKMBBL+hF9Q==
   dependencies:
-    ast-types "0.14.2"
+    ast-types "^0.16.1"
     esprima "~4.0.0"
     source-map "~0.6.1"
+    tiny-invariant "^1.3.3"
     tslib "^2.0.1"
 
 reflect.getprototypeof@^1.0.6, reflect.getprototypeof@^1.0.9:
@@ -8677,7 +8678,7 @@ table@6.8.2:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-table@^6.7.1:
+table@^6.9.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/table/-/table-6.9.0.tgz#50040afa6264141c7566b3b81d4d82c47a8668f5"
   integrity sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==
@@ -8764,6 +8765,11 @@ thunky@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
+
+tiny-invariant@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.3.tgz#46680b7a873a0d5d10005995eb90a70d74d60127"
+  integrity sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==
 
 tmp@^0.0.33:
   version "0.0.33"
