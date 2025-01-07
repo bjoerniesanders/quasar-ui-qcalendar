@@ -1,19 +1,14 @@
-const
-  LRU = require('lru-cache'),
-  hash = require('hash-sum')
+import { LRUCache } from 'lru-cache'
+import hash from 'hash-sum'
 
-const
-  md = require('./markdown.js'),
-  { convertToRelated, flatMenu } = require('./flat-menu')
+import md from './markdown.js'
+import { convertToRelated, flatMenu } from './flat-menu.js'
 
-const {
-  getVueComponent,
-  parseFrontMatter
-} = require('./md-loader-utils')
+import { getVueComponent, parseFrontMatter } from './md-loader-utils.js'
 
-const cache = new LRU({ max: 1000 })
+const cache = new LRUCache({ max: 1000 })
 
-module.exports = function (source) {
+export default function (source) {
   const key = hash(source)
   const hit = cache.get(key)
 

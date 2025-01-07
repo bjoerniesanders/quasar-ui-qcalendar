@@ -10,7 +10,7 @@ To use transitions, you must include the `QCalendarTransitions.sass` or `QCalend
 
 In your sass file:
 ```
-@import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
+@use '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
 ```
 
 In your Vue file (in a script section):

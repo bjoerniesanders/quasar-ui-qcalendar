@@ -1,4 +1,6 @@
-@import './prism-theme.sass'
+@use './prism-theme.sass'
+@use 'quasar/src/css/variables.sass' as vars
+@use 'sass:color'
 
 .markdown
   position: relative
@@ -141,73 +143,73 @@
 
   &--token
     white-space: nowrap
-    background: $grey-1
-    color: $grey-10
-    border: $grey-8 solid 1px
+    background: vars.$grey-1
+    color: vars.$grey-10
+    border: vars.$grey-8 solid 1px
     padding: 1px 2px
     font-family: inherit
-    border-radius: $generic-border-radius
+    border-radius: vars.$generic-border-radius
 
   &--note
     margin: 14px 0
     padding: 10px
     font-size: 1em
     letter-spacing: .5px
-    background: $blue-grey-1
-    color: $grey-10
+    background: vars.$blue-grey-1
+    color: vars.$grey-10
     font-weight: 400
 
     > p:last-child, .markdown--note:last-child
       margin-bottom: 0
 
     .markdown--link
-      // color: $grey-2
+      // color: $grey-2 
 
     &--
-      border-left: 10px solid lighten($grey-8, 30%)
+      border-left: 10px solid color.adjust(vars.$grey-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
       .markdown--link
-        color: lighten($grey-8, 10%)
+        color: color.adjust(vars.$grey-8, $lightness: 10%)
 
     &--info
-      border-left: 10px solid lighten($blue-8, 30%)
+      border-left: 10px solid color.adjust(vars.$blue-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
-      color: $grey-9
-      background: $blue-2
+      color: vars.$grey-9
+      background: vars.$blue-2
       .markdown--link
-        color: lighten($blue-8, 10%)
+        color: color.adjust(vars.$blue-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($blue-8, 10%)
+        color: color.adjust(vars.$blue-8, $lightness: 10%)
 
     &--tip
-      border-left: 10px solid lighten($green-8, 30%)
+      border-left: 10px solid color.adjust(vars.$green-8, $lightness: 30%)
       border-radius: 8px 0 0 8px
-      color: $grey-9
-      background: $green-2
+      color: vars.$grey-9
+      background: vars.$green-2
       .markdown--link
-        color: lighten($green-8, 10%)
+        color: color.adjust(vars.$green-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($green-8, 10%)
+        color: color.adjust(vars.$green-8, $lightness: 10%)
 
     &--warning
-      border-left: 10px solid lighten($orange-10, 30%)
+      border-left: 10px solid color.adjust(vars.$orange-10, $lightness: 30%)
       border-radius: 8px 0 0 8px
-      color: $grey-9
-      background: $orange-2
+      color: vars.$grey-9
+      background: vars.$orange-2
       .markdown--link
-        color: lighten($orange-10, 10%)
+        color: color.adjust(vars.$orange-10, $lightness: 10%)
       .markdown--note-title
-        color: lighten($orange-10, 10%)
+        color: color.adjust(vars.$orange-10, $lightness: 10%)
 
     &--danger
-      border-left: 10px solid lighten($negative, 30%)
+      border-left: 10px solid color.adjust(vars.$negative, $lightness: 30%)
       border-radius: 8px 0 0 8px
-      color: $grey-9
-      background: $red-2
+      color: vars.$grey-9
+      background: vars.$red-2
       .markdown--link
-        color: lighten($red-8, 10%)
+        color: color.adjust(vars.$red-8, $lightness: 10%)
       .markdown--note-title
-        color: lighten($red-8, 10%)
+        color: color.adjust(vars.$red-8, $lightness: 10%)
 
     &-title
       font-weight: 800
@@ -223,24 +225,24 @@
     max-width: 100%
     border-width: 1px
     border-style: solid
-    border-color: $grey
+    border-color: vars.$grey
 
   &--line-numbers-wrapper
     display: flex
     justify-content: flex-start
     font-size: 12px
     margin: 0 0 1.0em 0
-    background: $blue-grey-1
-    color: $grey-10
+    background: vars.$blue-grey-1
+    color: vars.$grey-10
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
-    border-radius: $generic-border-radius
+    border-radius: vars.$generic-border-radius
 
   &--line-numbers
     padding: 5px
     text-align: right
 
   &--line-number
-    color: $grey-6
+    color: vars.$grey-6
     margin: 0
     position: relative
     text-align: left
@@ -261,8 +263,8 @@
     margin: 0
     position: relative
     font-size: 12px
-    color: $grey-10
-    background-color: $blue-grey-1
+    color: vars.$grey-10
+    background-color: vars.$blue-grey-1
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
     text-align: left
     white-space: pre
@@ -276,10 +278,10 @@
   &--code
     overflow: visible
     padding: 0
-    border-radius: $generic-border-radius
+    border-radius: vars.$generic-border-radius
 
     &__inner
-      background-color: $grey-2
+      background-color: vars.$grey-2
       max-height: inherit
       height: inherit
       padding: 1em
@@ -289,26 +291,26 @@
       &--prerendered
         border-width: 1px 4px
         border-style: solid
-        border-color: $separator-color
-        border-left-color: $primary
-        border-right-color: $primary
-        border-radius: $generic-border-radius
+        border-color: vars.$separator-color
+        border-left-color: vars.$primary
+        border-right-color: vars.$primary
+        border-radius: vars.$generic-border-radius
 
   &--table
-    border-color: $grey-4
-    background: $grey-1
+    border-color: vars.$grey-4
+    background: vars.$grey-1
 
   &--table thead
-    background: $grey-4
+    background: vars.$grey-4
 
   &--table thead tr th
     padding: 8px
     border-width: 1px
     border-style: solid
-    background: $grey-2
+    background: vars.$grey-2
 
   &--table tbody
-    background: $grey-1
+    background: vars.$grey-1
 
   &--table tbody td,
   &--table tbody th
@@ -317,7 +319,7 @@
     border-style: solid
 
   &--table tbody tr:nth-child(odd)
-    background: $grey-4
+    background: vars.$grey-4
 
 // .markdown--page > div, .markdown--page > pre
 //   margin-bottom: 22px
@@ -333,7 +335,7 @@ blockquote.markdown--note
   border-width: 1px 8px 1px 8px
   border-radius: 8px
   border-style: solid
-  border-color: $grey-6 $teal-6
+  border-color: vars.$grey-6 vars.$teal-6
 
 .markdown__copy
   position: absolute
@@ -342,11 +344,11 @@ blockquote.markdown--note
 
 .body--dark
   .markdown
-    color: $grey-2
+    color: vars.$grey-2
 
     code
-      background: $grey-9
-      color: $grey-2
+      background: vars.$grey-9
+      color: vars.$grey-2
 
     .markdown--link
       // color: $teal-6
@@ -355,50 +357,50 @@ blockquote.markdown--note
         // color: yellow
 
     blockquote.markdown--note
-      border-color: $grey-6 $grey-6
-      background: $dark
-      color: $grey-2
+      border-color: vars.$grey-6 vars.$grey-6
+      background: vars.$dark
+      color: vars.$grey-2
 
     pre, pre code
-      background: $dark
+      background: vars.$dark
 
     .markdown--line-numbers-wrapper
-      background: $dark
-      color: $grey-2
+      background: vars.$dark
+      color: vars.$grey-2
 
     .markdown--token
-      background: $grey-6
-      color: $grey-10
-      border: $grey-4 solid 1px
+      background: vars.$grey-6
+      color: vars.$grey-10
+      border: vars.$grey-4 solid 1px
 
     .markdown--code
-      background: $dark
-      color: $grey-10
+      background: vars.$dark
+      color: vars.$grey-10
 
     .markdown--note
-      background: $grey-10
+      background: vars.$grey-10
       color: white
-      border-top: 1px solid $grey-9
-      border-bottom: 1px solid $grey-9
+      border-top: 1px solid vars.$grey-9
+      border-bottom: 1px solid vars.$grey-9
 
     .markdown--note--
-      border-left: 10px solid $grey-6
+      border-left: 10px solid vars.$grey-6
 
     .markdown--note--info
-      border-left: 10px solid $light-blue-10
+      border-left: 10px solid vars.$light-blue-10
 
     .markdown--note--tip
-      border-left: 10px solid $light-green-10
+      border-left: 10px solid vars.$light-green-10
 
     .markdown--note--warning
-      border-left: 10px solid $orange-10
+      border-left: 10px solid vars.$orange-10
 
     .markdown--note--danger
-      border-left: 10px solid $red-10
+      border-left: 10px solid vars.$red-10
 
     .markdown--table thead tr th,
     .markdown--table tbody
-      background-color: $dark
+      background-color: vars.$dark
 
     .markdown--table tbody tr:nth-child(2n+1)
-      background-color: $grey-9
+      background-color: vars.$grey-9
