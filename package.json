@@ -90,8 +90,7 @@
     "rtlcss": "^4.0.0",
     "sass": "^1.83.1",
     "uglify-js": "^3.17.4",
-    "vue-jest": "^5.0.0-alpha.8",
-    "zlib": "^1.0.5"
+    "vue-jest": "^5.0.0-alpha.8"
   },
   "browserslist": [
     "last 4 Chrome versions",
