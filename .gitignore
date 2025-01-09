@@ -1,10 +1,10 @@
 # Testing
 /test/jest/coverage
-
+node_modules
 ui/node_modules
 ui/dev/yarn.lock
 ui/dev/node_modules
-
+ui/dist
 demo/node_modules
 
 ./dist
